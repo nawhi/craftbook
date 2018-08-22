@@ -1,4 +1,4 @@
-package CraftBook;
+package craftbook;
 
 public class Application {
 
