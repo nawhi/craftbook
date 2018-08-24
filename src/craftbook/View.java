@@ -29,7 +29,15 @@ public abstract class View {
 		throw new RuntimeException("not implemented");
 	}
 	
+	/**
+	 * Print the content of the view to the view's output stream.
+	 */
 	public abstract void show();
+	
+	/**
+	 * Calculate the content of the view.
+	 * @return string containing the full content of the view 
+	 */
 	public abstract String calculate();
 	
 	/**

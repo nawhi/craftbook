@@ -28,19 +28,11 @@ public class ProfileView extends View {
 		super(user, ostream);
 	}
 	
-	/**
-	 * Calculate the content of the view and print it
-	 * to the output stream.
-	 */
 	@Override
 	public void show() {
 		throw new RuntimeException("not implemented");
 	}
 	
-	/**
-	 * @return string containing the full view of this user's
-	 * 		   profile 
-	 */
 	@Override
 	public String calculate() {
 		throw new RuntimeException("not implemented");
