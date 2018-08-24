@@ -35,11 +35,13 @@ public abstract class View {
 	 * Produce a description of the difference between two times
 	 * in a way appropriate for display to the user. Will display
 	 * the difference in the highest-grained nonzero time unit only.
-	 * @return a String describing the time interval between 
+	 * @param a the first Instant to compare
+	 * @param b the second Instant to compare 
+	 * @return string describing the time interval between 
 	 * 		   start and end. For example: "moments", "3 seconds",
 	 * 		   "5 minutes", "7 days"
 	 */
-	public String calcTimespan(Instant start, Instant end) {
+	public static String calcTimespan(Instant a, Instant b) {
 		throw new RuntimeException("not implemented");
 	}
 }
