@@ -4,48 +4,49 @@ import static org.junit.Assert.*;
 
 import java.util.NoSuchElementException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class ModelTest {
 
+	private Model model = new Model();
+	private User dave;
+	
+	@Before
+	public void setUp() {
+		dave = model.createUser("dave");
+	}
+	
 	@Test
 	public void canCreateNewUser() {
-		Model m = new Model();
-		User dave = m.createUser("dave");
-		assertSame(dave, m.getUser("dave"));
-		assertEquals("dave", m.getUser("dave").getHandle());
+		assertSame(dave, model.getUser("dave"));
+		assertEquals("dave", model.getUser("dave").getHandle());
 	}
 	
 	@Test
 	public void userExistsWhenCreated() {
-		Model m = new Model();
-		m.createUser("dave");
-		assertTrue(m.userExists("dave"));
+		assertTrue(model.userExists("dave"));
 	}
 	
 	@Test
 	public void getUserReturnsReferenceModifiableInPlace() {
-		Model m = new Model();
-		User dave = m.createUser("dave");
 		dave.post("hello world");
-		assertSame(dave, m.getUser("dave"));
+		assertSame(dave, model.getUser("dave"));
 	}
 	
 	@Test(expected=NoSuchElementException.class)
 	public void cannotGetNonexistentUser() {
-		new Model().getUser("nonexistent");
+		model.getUser("nonexistent");
 	}
 	
 	@Test
 	public void nonexistentUserDoesNotExist() {
-		assertFalse(new Model().userExists("nonexistent"));
+		assertFalse(model.userExists("nonexistent"));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void cannotCreateTwoUsersWithSameHandle() {
-		Model m = new Model();
-		m.createUser("dave");
-		m.createUser("dave");
+		model.createUser("dave");
 	}
 	
 }
