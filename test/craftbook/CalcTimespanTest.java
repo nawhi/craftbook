@@ -6,7 +6,7 @@ import java.time.Instant;
 
 import org.junit.Test;
 
-public class ViewTest {
+public class CalcTimespanTest {
 	
 	/*
 	 * Constants used in boundary testing of calcTimespan
