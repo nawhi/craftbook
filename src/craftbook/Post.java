@@ -13,22 +13,27 @@ public class Post {
 	private final String message;
 	private final Instant timestamp;
 	
+
+	protected Post(String msg) {
+		if (msg.isEmpty())
+			throw new IllegalArgumentException("Cannot post an empty message");
+		message = msg;
+		timestamp = getTimestamp();
+	}
+
 	/**
 	 * Create a new post, timestamped with the current time.
 	 * @param msg the text content of the post
 	 */
-	public Post(String msg) {
-		if (msg.isEmpty())
-			throw new IllegalArgumentException("Cannot post an empty message");
-		message = msg;
-		timestamp = Instant.now();
+	public static Post from(String msg) {
+		return new Post(msg);
 	}
 	
 	/**
-	 * @return the Instant at which the post was made
+	 * @return the Instant to use as the timestamp for the post
 	 */
-	public Instant getTimestamp() {
-		return timestamp;
+	protected Instant getTimestamp() {
+		return Instant.now();
 	}
 	
 	/**
