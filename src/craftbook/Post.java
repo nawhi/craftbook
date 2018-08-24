@@ -10,25 +10,31 @@ import java.time.Instant;
  */
 public class Post {
 	
+	private final String message;
+	private final Instant timestamp;
+	
 	/**
 	 * Create a new post, timestamped with the current time.
 	 * @param msg the text content of the post
 	 */
 	public Post(String msg) {
-		throw new RuntimeException("not implemented");
+		if (msg.isEmpty())
+			throw new IllegalArgumentException("Cannot post an empty message");
+		message = msg;
+		timestamp = Instant.now();
 	}
 	
 	/**
 	 * @return the Instant at which the post was made
 	 */
 	public Instant getTimestamp() {
-		throw new RuntimeException("not implemented");
+		return timestamp;
 	}
 	
 	/**
 	 * @return the text content of the post
 	 */
 	public String getMessage() { 
-		throw new RuntimeException("not implemented");
+		return message;
 	}
 }

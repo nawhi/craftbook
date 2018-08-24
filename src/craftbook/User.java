@@ -1,5 +1,6 @@
 package craftbook;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,13 +11,28 @@ import java.util.List;
  */
 public class User {
 
+	private final String handle;
+	private List<Post> posts = new ArrayList<>();
+	
 	/**
 	 * Create a new User.
 	 * @param h nonempty string of the new user's handle,
 	 * 		    which should not contain whitespace
 	 */
 	public User(String h) {
-		throw new RuntimeException("not implemented");
+		if (h.isEmpty())
+			throw new IllegalArgumentException("Handle cannot be the empty string");
+		if (h.matches(".*\\s.*"))
+			throw new IllegalArgumentException("Handle cannot contain whitespace");
+		
+		handle = h;
+	}
+	
+	/**
+	 * @return the user's handle
+	 */
+	public String getHandle() {
+		return handle;
 	}
 	
 	/**
@@ -24,7 +40,7 @@ public class User {
 	 * 		   chronologically by oldest first
 	 */
 	public List<Post> getPosts() {
-		throw new RuntimeException("not implemented");
+		return new ArrayList<>(posts);
 	}
 	
 	/**
@@ -33,6 +49,6 @@ public class User {
 	 * @param message nonempty string of the text content of the post
 	 */
 	public void post(String message) {
-		throw new RuntimeException("not implemented");
+		posts.add(new Post(message));
 	}
 }

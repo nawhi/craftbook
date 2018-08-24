@@ -71,8 +71,8 @@ public class UserTest {
 		dave.post(msg);
 		dave.post(msg);
 		List<Post> posts = dave.getPosts();
-		assertEquals(msg, posts.get(0));
-		assertEquals(msg, posts.get(1));
+		assertEquals(msg, posts.get(0).getMessage());
+		assertEquals(msg, posts.get(1).getMessage());
 	}
 
 }
