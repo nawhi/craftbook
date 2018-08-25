@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 /**
- * The model of the application. This keeps track
+ * The model of the application. This singleton keeps track
  * of runtime data (i.e. a list of all users that
  * have been created), allowing access to that data,
  * and also allowing new users to be created.
