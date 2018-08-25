@@ -20,18 +20,10 @@ public class CommandParserTest {
 	}
 	
 	@Test
-	public void whitespaceIsIgnoredInFirstTwoTokens() throws Exception {
+	public void leadingAndTrailingWhitespaceIsStripped() throws Exception {
 		assertEquals(
-			new TokenList("dave", "->", "Hello"),
-			CommandParser.parse("   dave    -> Hello")
-		);
-	}
-	
-	@Test
-	public void whitespaceIsIncludedInFinalToken() throws Exception {
-		assertEquals(
-			new TokenList("dave", "->", "    hello world    "), 
-			CommandParser.parse("dave ->     hello world    ")
+			new TokenList("dave", "->", "Hello world"),
+			CommandParser.parse("   dave    ->    Hello world    ")
 		);
 	}
 }
