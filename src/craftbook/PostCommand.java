@@ -16,7 +16,7 @@ public class PostCommand extends Command {
 
 	@Override
 	public void execute() {
-		 throw new RuntimeException("TODO");
+		 targetUser.post(message);
 	}
 
 }
