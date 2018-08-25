@@ -1,6 +1,7 @@
 package craftbook;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ public class User {
 
 	private final String handle;
 	private List<Post> posts = new ArrayList<>();
+	private Set<User> followers = new HashSet<>();
 	
 	/**
 	 * Create a new User.
@@ -58,7 +60,9 @@ public class User {
 	 * @param other the other User that this user is to follow
 	 */
 	public void follow(User other) {
-		throw new RuntimeException("not implemented");
+		if (other == this)
+			throw new IllegalArgumentException("User " + handle + " cannot follow itself");
+		followers.add(other);
 	}
 	
 	/**
@@ -66,6 +70,6 @@ public class User {
 	 *         followed by this user
 	 */
 	public Set<User> getFollowers() {
-		throw new RuntimeException("not implemented");
+		return new HashSet<>(followers);
 	}
 }

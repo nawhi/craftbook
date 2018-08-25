@@ -82,7 +82,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void getFollowersOneFollowerReturnsFollower() {
+	public void userCanFollowOneUser() {
 		User dan = new User("dan");
 		dave.follow(dan);
 		assertEquals(1, dave.getFollowers().size());
@@ -90,7 +90,16 @@ public class UserTest {
 	}
 	
 	@Test
-	public void getFollowersMultipleFollowersReturnsAllFollowers() {
+	public void userCanFollowSameUserTwice() {
+		User dan = new User("dan");
+		dave.follow(dan);
+		dave.follow(dan);
+		assertEquals(1, dave.getFollowers().size());
+		assertTrue(dave.getFollowers().contains(dan));
+	}
+	
+	@Test
+	public void userCanFollowMultipleUsers() {
 		User dan = new User("dan");
 		User adam = new User("adam");
 		dave.follow(dan);
@@ -101,7 +110,7 @@ public class UserTest {
 	}
 	
 	@Test
-	public void mutualFollowingWorks() {
+	public void usersCanFollowEachOther() {
 		User dan = new User("dan");
 		dave.follow(dan);
 		dan.follow(dave);
