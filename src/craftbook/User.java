@@ -2,6 +2,7 @@ package craftbook;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Class representing a user of the social network. It stores
@@ -50,5 +51,21 @@ public class User {
 	 */
 	public void post(String message) {
 		posts.add(Post.from(message));
+	}
+	
+	/**
+	 * Record that this user follows another user.
+	 * @param other the other User that this user is to follow
+	 */
+	public void follow(User other) {
+		throw new RuntimeException("not implemented");
+	}
+	
+	/**
+	 * @return a Set containing references to all the users 
+	 *         followed by this user
+	 */
+	public Set<User> getFollowers() {
+		throw new RuntimeException("not implemented");
 	}
 }

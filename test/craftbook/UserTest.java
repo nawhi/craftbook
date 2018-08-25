@@ -70,5 +70,44 @@ public class UserTest {
 		assertEquals(msg, posts.get(0).getMessage());
 		assertEquals(msg, posts.get(1).getMessage());
 	}
-
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void userCannotFollowItself() {
+		dave.follow(dave);
+	}
+	
+	@Test
+	public void getFollowersNoFollowersReturnsEmptySet() {
+		assertTrue(dave.getFollowers().isEmpty());
+	}
+	
+	@Test
+	public void getFollowersOneFollowerReturnsFollower() {
+		User dan = new User("dan");
+		dave.follow(dan);
+		assertEquals(1, dave.getFollowers().size());
+		assertTrue(dave.getFollowers().contains(dan));
+	}
+	
+	@Test
+	public void getFollowersMultipleFollowersReturnsAllFollowers() {
+		User dan = new User("dan");
+		User adam = new User("adam");
+		dave.follow(dan);
+		dave.follow(adam);
+		assertEquals(2, dave.getFollowers().size());
+		assertTrue(dave.getFollowers().contains(dan));
+		assertTrue(dave.getFollowers().contains(adam));
+	}
+	
+	@Test
+	public void mutualFollowingWorks() {
+		User dan = new User("dan");
+		dave.follow(dan);
+		dan.follow(dave);
+		assertEquals(1, dave.getFollowers().size());
+		assertTrue(dave.getFollowers().contains(dan));
+		assertEquals(1, dan.getFollowers().size());
+		assertTrue(dan.getFollowers().contains(dave));
+	}
 }
