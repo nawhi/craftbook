@@ -2,10 +2,8 @@ package craftbook;
 
 import static org.junit.Assert.*;
 
-import java.lang.reflect.Method;
 import java.time.Instant;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /**
