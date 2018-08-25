@@ -14,26 +14,23 @@ public class Post {
 	private final Instant timestamp;
 	
 
-	protected Post(String msg) {
+	/**
+	 * Create a new Post with the specified message,
+	 * timestamped with the current time.
+	 * @param msg the text content of the post
+	 */
+	public Post(String msg) {
 		if (msg.isEmpty())
 			throw new IllegalArgumentException("Cannot post an empty message");
 		message = msg;
-		timestamp = getTimestamp();
+		timestamp = makeTimestamp();
 	}
 
 	/**
-	 * Create a new post, timestamped with the current time.
-	 * @param msg the text content of the post
+	 * @return the Instant representing the post's timestamp 
 	 */
-	public static Post from(String msg) {
-		return new Post(msg);
-	}
-	
-	/**
-	 * @return the Instant to use as the timestamp for the post
-	 */
-	protected Instant getTimestamp() {
-		return Instant.now();
+	public Instant getTimestamp() {
+		return timestamp;
 	}
 	
 	/**
@@ -41,5 +38,14 @@ public class Post {
 	 */
 	public String getMessage() { 
 		return message;
+	}
+	
+	/**
+	 * Private overridable method which creates the timestamp
+	 * for the post.
+	 * @return the Instant representing the post's timestamp
+	 */
+	protected Instant makeTimestamp() {
+		return Instant.now();
 	}
 }

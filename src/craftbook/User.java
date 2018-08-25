@@ -16,6 +16,7 @@ public class User {
 	private final String handle;
 	private List<Post> posts = new ArrayList<>();
 	private Set<User> followers = new HashSet<>();
+	private PostFactory postFactory;
 	
 	/**
 	 * Create a new User.
@@ -29,6 +30,25 @@ public class User {
 			throw new IllegalArgumentException("Handle cannot contain whitespace");
 		
 		handle = h;
+		
+		// Factory just wraps Post constructor by default 
+		postFactory = new PostFactory() {
+			@Override public Post createPost(String msg) {
+				return new Post(msg);
+			}
+		};
+	}
+	
+	/**
+	 * Create a new User, specifying a custom way of creating
+	 * that user's posts.
+	 * @param h nonempty string of the new user's handle, which
+	 *          should not contain whitespace
+	 * @param p the PostFactory to use for creating posts
+	 */
+	public User (String h, PostFactory p) {
+		this(h);
+		postFactory = p;
 	}
 	
 	/**
@@ -52,7 +72,7 @@ public class User {
 	 * @param message nonempty string of the text content of the post
 	 */
 	public void post(String message) {
-		posts.add(Post.from(message));
+		posts.add(postFactory.createPost(message));
 	}
 	
 	/**
