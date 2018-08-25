@@ -36,6 +36,10 @@ public class CommandFactory {
 		throw new IllegalArgumentException("Could not understand parameters");
 	}
 	
+	public Command makeCommand(TokenList tokens) {
+		return makeCommand(tokens.username, tokens.command, tokens.parameter);
+	}
+	
 	/**
 	 * Create a new CommandFactory.
 	 * @param m the Model singleton for this instance of the application
