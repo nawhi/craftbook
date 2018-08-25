@@ -15,9 +15,9 @@ class TokenList {
 	
 	@Override public boolean equals(Object other) {
 		if (other instanceof TokenList) {
-			return username == ((TokenList)other).username
-				&& command == ((TokenList)other).command
-				&& parameter == ((TokenList)other).parameter;
+			return username.equals(((TokenList)other).username)
+				&& command.equals(((TokenList)other).command)
+				&& parameter.equals(((TokenList)other).parameter);
 		}
 		return false;
 	}
