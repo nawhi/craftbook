@@ -89,7 +89,7 @@ public class ProfileViewTest {
 		dave.post("Hello again", POST_TIME);
 		
 		assertEquals(
-			"Hello (moments ago)\nHello (moments ago)\nHello again (moments ago)", 
+			"Hello again (moments ago)\nHello (moments ago)\nHello (moments ago)", 
 			view.calculate());
 	}
 	

@@ -1,6 +1,7 @@
 package craftbook;
 
 import java.io.PrintStream;
+import java.util.List;
 
 /**
  * Class that produces a text-based view of a user's
@@ -30,11 +31,31 @@ public class ProfileView extends View {
 	
 	@Override
 	public void show() {
-		throw new RuntimeException("not implemented");
+		System.out.println(calculate());
 	}
 	
 	@Override
 	public String calculate() {
-		throw new RuntimeException("not implemented");
+		StringBuilder result = new StringBuilder();
+		
+		// Assumed to be pre-sorted (see getPosts description)
+		List<Post> posts = targetUser.getPosts();
+		
+		// Iterate backwards (most recent first)
+		for (int i = posts.size() - 1; i >= 0; --i) {
+			Post post = posts.get(i);
+			result.append(
+				String.format(
+					"%s (%s ago)",
+					post.getMessage(),
+					calcTimespan(post.getTimestamp(), getCurrentTime())
+				)
+			);
+			
+			if (i > 0)
+				result.append('\n');
+		}
+		
+		return result.toString();
 	}
 }

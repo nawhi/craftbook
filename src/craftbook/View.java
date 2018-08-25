@@ -10,13 +10,16 @@ import java.time.Instant;
  */
 public abstract class View {
 
+	protected User targetUser;
+	protected PrintStream outStream;
+	
 	/**
 	 * Create a new instance of the view, which
 	 * prints its output to System.out.
 	 * @param user the User whose data is to be viewed
 	 */
 	public View(User user) {
-		throw new RuntimeException("not implemented");
+		targetUser = user;
 	}
 	
 	/**
@@ -26,7 +29,8 @@ public abstract class View {
 	 * @param ostream The output stream to print the view to
 	 */
 	public View(User user, PrintStream ostream) {
-		throw new RuntimeException("not implemented");
+		targetUser = user;
+		outStream = ostream;
 	}
 	
 	/**
