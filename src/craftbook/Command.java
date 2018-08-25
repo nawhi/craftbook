@@ -10,12 +10,12 @@ public abstract class Command {
 
 	/**
 	 * Virtual constructor with common initialisation code
-	 * only. Constructors for concrete instances of Command 
-	 * are only called by the static creation method from().
+	 * only.
 	 * @param m the Model singleton for this instance of 
 	 *        the application
+	 * @param u the User to execute this command on
 	 */
-	protected Command(Model m, User u) {
+	public Command(Model m, User u) {
 		throw new RuntimeException("not implemented");
 	}
 	
@@ -24,17 +24,5 @@ public abstract class Command {
 	 */
 	public abstract void execute();
 	
-	/**
-	 * Create a new Command formed from the specified parameters.
-	 * @param user The nonempty handle of the user for which to execute 
-	 *        the command. 
-	 * @param commandType The text of the command itself, which may be
-	 *        the empty string.
-	 * @param arg The argument supplied with the command, which may be
-	 *        the empty string.
-	 * @return
-	 */
-	public static Command from(String userHandle, String commandText, String arg) {
-		throw new RuntimeException("not implemented");
-	}
+
 }
