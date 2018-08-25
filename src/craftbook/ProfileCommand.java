@@ -20,7 +20,8 @@ public class ProfileCommand extends Command {
 
 	@Override
 	public void execute() {
-		 throw new RuntimeException("TODO");
+		 ProfileView pview = new ProfileView(targetUser);
+		 pview.show();
 	}
 
 }
