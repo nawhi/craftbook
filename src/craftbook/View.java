@@ -73,4 +73,8 @@ public abstract class View {
 		
 		return "over a month";
 	}
+	
+	protected Instant getCurrentTime() {
+		return Instant.now();
+	}
 }

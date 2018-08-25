@@ -14,9 +14,9 @@ import java.util.Set;
  */
 public class User {
 
-	private final String handle;
-	private List<Post> posts = new ArrayList<>();
-	private Set<User> followers = new HashSet<>();
+	protected final String handle;
+	protected List<Post> posts = new ArrayList<>();
+	protected Set<User> followers = new HashSet<>();
 	
 	/**
 	 * Create a new User.
