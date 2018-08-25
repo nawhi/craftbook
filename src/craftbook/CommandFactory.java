@@ -30,7 +30,7 @@ public class CommandFactory {
 		if (commandText.isEmpty())
 			return new ProfileCommand(user);
 		
-		if (commandText == "->")
+		if (commandText.equals("->"))
 			return new PostCommand(user, arg);
 		
 		throw new IllegalArgumentException("Could not understand parameters");
