@@ -23,7 +23,7 @@ public class Model {
 	 * @return true if the user has previously been
 	 * 		   created
 	 */
-	public boolean userExists(String handle) {
+	public boolean hasUser(String handle) {
 		return users.containsKey(handle);
 	}
 	
@@ -48,7 +48,7 @@ public class Model {
 	 * @return reference to the User object that was created
 	 */
 	public User createUser(String handle) {
-		if (userExists(handle))
+		if (hasUser(handle))
 			throw new IllegalArgumentException("User '" + handle + "' already exists");
 		User created = new User(handle);
 		users.put(handle, created);

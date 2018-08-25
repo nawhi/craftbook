@@ -11,7 +11,11 @@ public class CommandFactory {
 	 *        the empty string.
 	 * @return
 	 */
-	public static Command makeCommand(String userHandle, String commandText, String arg) {
+	public Command makeCommand(String userHandle, String commandText, String arg) {
 		throw new RuntimeException("not implemented");
+	}
+	
+	public CommandFactory(Model m) {
+		throw new RuntimeException("TODO");
 	}
 }

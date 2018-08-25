@@ -25,7 +25,7 @@ public class ModelTest {
 	
 	@Test
 	public void userExistsWhenCreated() {
-		assertTrue(model.userExists("dave"));
+		assertTrue(model.hasUser("dave"));
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ public class ModelTest {
 	
 	@Test
 	public void nonexistentUserDoesNotExist() {
-		assertFalse(model.userExists("nonexistent"));
+		assertFalse(model.hasUser("nonexistent"));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)

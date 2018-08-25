@@ -6,7 +6,8 @@ import org.junit.Test;
 
 public class CommandFactoryTest {
 
-	
+	private Model model = new Model();
+	private CommandFactory factory = new CommandFactory(model);
 	
 	/*
 	 * Checks that Command.from() works
@@ -20,20 +21,21 @@ public class CommandFactoryTest {
 	 */
 	
 	@Test
-	public void testPostCreation() {
-		Command c = CommandFactory.makeCommand("dave", "->", "Hello World");
+	public void nonexistentUserShouldBeCreated() {
+		factory.makeCommand("dave", "", "");
+		assertTrue(model.hasUser("dave"));
+	}
+	
+	@Test
+	public void shouldReturnPostCommandWithPostParameters() {
+		Command c = factory.makeCommand("dave", "->", "Hello World");
 		assertTrue(c instanceof PostCommand);
 	}
 	
 	@Test
-	public void testProfileCreation() {
-		Command p = CommandFactory.makeCommand("dave", "", "");
+	public void shouldReturnProfileCommandWithProfileParameters() {
+		Command p = factory.makeCommand("dave", "", "");
 		assertTrue(p instanceof ProfileCommand);
 	}
 	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
 }
