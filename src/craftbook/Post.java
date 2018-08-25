@@ -8,7 +8,7 @@ import java.time.Instant;
  * with the instant at which its constructor was called. 
  * @author nick
  */
-public class Post {
+public class Post implements Comparable<Post> {
 	
 	private final String message;
 	private final Instant timestamp;
@@ -48,5 +48,10 @@ public class Post {
 	 */
 	protected Instant makeTimestamp() {
 		return Instant.now();
+	}
+
+	@Override
+	public int compareTo(Post other) {
+		return timestamp.compareTo(other.timestamp);
 	}
 }
