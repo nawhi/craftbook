@@ -10,8 +10,8 @@ public class CommandParserTest {
 	
 	@Test
 	public void getTokensProducesEmptyStringCorrectly() throws Exception {
-		assertEquals(new TokenList("foo", "", ""), CommandParser.getTokens("foo"));
-		assertEquals(new TokenList("foo", "bar", ""), CommandParser.getTokens("foo bar"));
+		assertEquals(new TokenList("foo", "", ""), CommandParser.parse("foo"));
+		assertEquals(new TokenList("foo", "bar", ""), CommandParser.parse("foo bar"));
 	}
 	
 	@Test(expected=ParseException.class)
@@ -22,17 +22,16 @@ public class CommandParserTest {
 	@Test
 	public void whitespaceIsIgnoredInFirstTwoTokens() throws Exception {
 		assertEquals(
-			new TokenList("foo", "bar", "baz"),
-			CommandParser.getTokens("   foo    bar baz")
+			new TokenList("dave", "->", "Hello"),
+			CommandParser.parse("   dave    -> Hello")
 		);
 	}
 	
 	@Test
 	public void whitespaceIsIncludedInFinalToken() throws Exception {
 		assertEquals(
-			new TokenList("foo", "bar", "    baz    "), 
-			CommandParser.getTokens("foo bar     baz    ")
+			new TokenList("dave", "->", "    hello world    "), 
+			CommandParser.parse("dave ->     hello world    ")
 		);
 	}
-
 }

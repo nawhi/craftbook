@@ -30,19 +30,11 @@ class TokenList {
  *
  */
 public final class CommandParser {
+
 	/**
-	 * Parse a line of user input into tokens that can be
-	 * used to generate a Command object for the command.
-	 * @param line the raw line, containing a command, to read
-	 * @return a Command object representing the user's command
-	 * @throws ParseException if the input cannot be tokenised
-	 */
-	public static Command parse(String line) throws ParseException {
-		throw new RuntimeException("TODO");
-	}
-	
-	/**
-	 * @param line the raw line to read
+	 * Parse a line of user input into three tokens that can be used
+	 * to generate a Command object for the command.
+	 * @param line the raw line, containing a user-inputted command, to read
 	 * @return an array of three Strings representing the user, command,
 	 *         and parameter tokens, where all three are non-null, user
 	 *         is nonempty and command and parameter may be empty.
@@ -50,7 +42,7 @@ public final class CommandParser {
 	 *         in the third (after the first space).
 	 * @throws ParseException if the input cannot be tokenised
 	 */
-	public static TokenList getTokens(String line) throws ParseException {
+	public static TokenList parse(String line) throws ParseException {
 		throw new RuntimeException("TODO");
 	}
 }
