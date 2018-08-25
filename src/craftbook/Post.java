@@ -18,12 +18,13 @@ public class Post {
 	 * Create a new Post with the specified message,
 	 * timestamped with the current time.
 	 * @param msg the text content of the post
+	 * @param ts the time at which the post was created
 	 */
-	public Post(String msg) {
+	public Post(String msg, Instant ts) {
 		if (msg.isEmpty())
 			throw new IllegalArgumentException("Cannot post an empty message");
 		message = msg;
-		timestamp = makeTimestamp();
+		timestamp = ts;
 	}
 
 	/**

@@ -1,12 +1,14 @@
 package craftbook;
 
+import java.time.Instant;
+
 import org.junit.Test;
 
 public class PostTest {
 
 	@Test(expected=IllegalArgumentException.class)
 	public void postCannotHaveEmptyMessage() {
-		new Post("");
+		new Post("", Instant.EPOCH);
 	}
 	
 
