@@ -22,6 +22,7 @@ public abstract class View {
 	 */
 	public View(User user) {
 		targetUser = user;
+		outStream = System.out;
 	}
 	
 	/**
