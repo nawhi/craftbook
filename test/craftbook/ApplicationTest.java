@@ -2,15 +2,36 @@ package craftbook;
 
 import static org.junit.Assert.*;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
+
+import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 
 import craftbook.Application.EventLoopState;
 
 public class ApplicationTest {
 
-	/*
-	 * This test prints lots of stuff to the console
-	 */
+	private PrintStream stdout;
+	
+	@Before
+	public void setUp() {
+		/*
+		 * Reroute unnecessary output during 
+		 * these tests to a dummy which discards it
+		 */
+		stdout = System.out;
+		System.setOut(new PrintStream(new OutputStream() {
+			@Override public void write(int bytes) {}
+		}));
+	}
+	
+	@After
+	public void tearDown() {
+		// Restore trashed standard out
+		System.setOut(stdout);
+	}
 	
 	Application app = new Application();
 	
