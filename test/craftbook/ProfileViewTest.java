@@ -7,20 +7,22 @@ import java.time.Instant;
 import org.junit.Test;
 
 /**
- * Minimal ProfileView mock which allows control over the
- * view's current time.
+ * Minimal ProfileView mock with current time fixed to
+ * 10 seconds after the epoch.
  * @author nick
  *
  */
 class DummyProfileView extends ProfileView {
 
+	public static final Instant TIME = Instant.ofEpochSecond(10);
+	
 	public DummyProfileView(User user) {
 		super(user);
 	}
 	
 	@Override 
 	public Instant getCurrentTime() {
-		return Instant.ofEpochSecond(10);
+		return TIME;
 	}
 }
 
