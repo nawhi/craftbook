@@ -23,26 +23,26 @@ public class Application {
 	private CommandFactory commandFactory = new CommandFactory(model);
 	
 	public int runEventLoop() {
-		Scanner scanner = new Scanner(System.in);
-		
 		printWelcomeMessage();
 			
-		for (;;) {
-			System.out.print(PROMPT);
-			
-			String input = scanner.nextLine();
-			
-			switch(handleInput(input))
-			{
-			case EXIT_NORMAL:
-				scanner.close();
-				return 0;
-			case EXIT_ERROR:
-				scanner.close();
-				return 1;
-			case CONTINUE:
-				break;
+		try (Scanner scanner = new Scanner(System.in)) {
+			for (;;) {
+				System.out.print(PROMPT);
+
+				String input = scanner.nextLine();
+				switch(handleInput(input))
+				{
+				case EXIT_NORMAL:
+					return 0;
+				case EXIT_ERROR:
+					return 1;
+				case CONTINUE:
+					break;
+				}
 			}
+		} catch (Exception ex) {
+			dumpErrorDetails(ex);
+			return 1;
 		}
 	}
 	
@@ -74,14 +74,8 @@ public class Application {
 			return EventLoopState.CONTINUE;
 		}
 		
-		try {
-			command.execute();
-		} catch (Exception ex) {
-			// Treat errors in execution as unrecoverable
-			dumpErrorDetails(ex);
-			return EventLoopState.EXIT_ERROR;
-		}
-		
+		// Errors in execution are fatal, so not caught here
+		command.execute();
 		return EventLoopState.CONTINUE;
 	}
 	
