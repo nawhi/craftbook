@@ -8,12 +8,11 @@ import java.util.Scanner;
 
 public class Application {
 	
-	private enum EventLoopState {
-		EXIT_NORMAL,
-		EXIT_ERROR,
-		CONTINUE
+	public enum EventLoopState {
+		Continue,
+		Exit
 	}
-
+	
 	private static final String HELPTEXT_FILE = "helptext.txt";
 	private static final String PROMPT = "> ";
 	
@@ -30,15 +29,9 @@ public class Application {
 				System.out.print(PROMPT);
 
 				String input = scanner.nextLine();
-				switch(handleInput(input))
-				{
-				case EXIT_NORMAL:
+				EventLoopState state = handleInput(input);
+				if (state == EventLoopState.Exit)
 					return 0;
-				case EXIT_ERROR:
-					return 1;
-				case CONTINUE:
-					break;
-				}
 			}
 		} catch (Exception ex) {
 			dumpErrorDetails(ex);
@@ -46,18 +39,23 @@ public class Application {
 		}
 	}
 	
-	private EventLoopState handleInput(String input) {
+	/**
+	 * @param input a line of input from the user
+	 * @return an EventLoopState indicating what the
+	 *         outcome of the input was for the program
+	 */
+	public EventLoopState handleInput(String input) {
 		switch(input)
 		{
 		case "":
 			// Ignore empty inputs
-			return EventLoopState.CONTINUE;
+			return EventLoopState.Continue;
 		case "!quit":
 			System.out.println("Bye");
-			return EventLoopState.EXIT_NORMAL;
+			return EventLoopState.Exit;
 		case "!help":
 			printHelp();
-			return EventLoopState.CONTINUE;
+			return EventLoopState.Continue;
 		}
 		
 		TokenList tokens;
@@ -71,12 +69,12 @@ public class Application {
 				System.out.println("Couldn't parse input: " + ex.getMessage());
 			else
 				System.out.println("Unexpected " + ex.getClass().getName() + " encountered while parsing input");
-			return EventLoopState.CONTINUE;
+			return EventLoopState.Continue;
 		}
 		
 		// Errors in execution are fatal, so not caught here
 		command.execute();
-		return EventLoopState.CONTINUE;
+		return EventLoopState.Continue;
 	}
 	
 	private static void printWelcomeMessage() {
