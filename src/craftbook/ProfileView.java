@@ -30,11 +30,6 @@ public class ProfileView extends View {
 	}
 	
 	@Override
-	public void show() {
-		System.out.println(calculate());
-	}
-	
-	@Override
 	public String calculate() {
 		StringBuilder result = new StringBuilder();
 		
