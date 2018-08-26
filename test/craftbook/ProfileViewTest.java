@@ -26,7 +26,7 @@ class DummyProfileView extends ProfileView {
 
 public class ProfileViewTest {
 
-	private final Instant POST_TIME = Instant.ofEpochSecond(10);
+	private static final Instant POST_TIME = Instant.ofEpochSecond(10);
 	private DummyUser dave = new DummyUser("dave");
 	private DummyProfileView view = new DummyProfileView(dave);
 		
