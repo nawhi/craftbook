@@ -8,7 +8,7 @@ package craftbook;
  */
 public abstract class Command {
 
-	protected User targetUser;
+	protected final User targetUser;
 	
 	/**
 	 * Virtual constructor with common initialisation code
