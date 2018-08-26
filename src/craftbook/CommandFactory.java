@@ -10,6 +10,14 @@ public class CommandFactory {
 	private Model model;
 	
 	/**
+	 * Create a new CommandFactory.
+	 * @param m the Model singleton for this instance of the application
+	 */
+	public CommandFactory(Model m) {
+		model = m;
+	}
+	
+	/**
 	 * Create a new Command formed from the specified parameters.
 	 * @param user The nonempty handle of the user for which to execute 
 	 *        the command.  If this user does not yet exist in the model,
@@ -21,11 +29,7 @@ public class CommandFactory {
 	 * @return
 	 */
 	public Command makeCommand(String userHandle, String commandText, String arg) {
-		User user;
-		if (!model.hasUser(userHandle))
-			user = model.createUser(userHandle);
-		else
-			user = model.getUser(userHandle);
+		User user = ensureUser(userHandle);
 		
 		if (commandText.isEmpty())
 			return new ProfileCommand(user);
@@ -36,6 +40,8 @@ public class CommandFactory {
 			return new PostCommand(user, arg);
 		case "wall":
 			return new WallCommand(user);
+		case "follows":
+			return new FollowCommand(user, ensureUser(arg));
 		default:
 			throw new IllegalArgumentException("Unrecognised command: " + commandText);
 		}
@@ -45,11 +51,9 @@ public class CommandFactory {
 		return makeCommand(tokens.username, tokens.command, tokens.parameter);
 	}
 	
-	/**
-	 * Create a new CommandFactory.
-	 * @param m the Model singleton for this instance of the application
-	 */
-	public CommandFactory(Model m) {
-		model = m;
+	private User ensureUser(String handle) {
+		if (model.hasUser(handle))
+			return model.getUser(handle);
+		return model.createUser(handle);
 	}
 }

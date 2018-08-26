@@ -24,6 +24,8 @@ public class CommandFactoryTest {
 	public void nonexistentUserShouldBeCreated() {
 		factory.makeCommand("dave", "", "");
 		assertTrue(model.hasUser("dave"));
+		factory.makeCommand("dave", "follows", "dan");
+		assertTrue(model.hasUser("dan"));
 	}
 	
 	@Test
@@ -50,6 +52,12 @@ public class CommandFactoryTest {
 	public void shouldReturnWallCommandWithWallParameters() {
 		Command w = factory.makeCommand("dave", "wall", "");
 		assertTrue(w instanceof WallCommand);
+	}
+	
+	@Test
+	public void shouldReturnFollowCommandWithFollowParameters() {
+		Command f = factory.makeCommand("dave", "follows", "dan");
+		assertTrue(f instanceof FollowCommand);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
