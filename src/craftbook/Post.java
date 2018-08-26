@@ -15,8 +15,6 @@ public class Post implements Comparable<Post> {
 	private final Instant timestamp;
 
 	/**
-	 * Create a new Post with the specified message,
-	 * timestamped with the current time.
 	 * @param msg the text content of the post
 	 * @param ts the time at which the post was created
 	 * @param u the author of the post

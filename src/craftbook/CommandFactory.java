@@ -10,7 +10,6 @@ public class CommandFactory {
 	private Model model;
 	
 	/**
-	 * Create a new CommandFactory.
 	 * @param m the Model singleton for this instance of the application
 	 */
 	public CommandFactory(Model m) {

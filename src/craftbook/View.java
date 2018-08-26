@@ -16,8 +16,7 @@ public abstract class View {
 	protected PrintStream outStream;
 	
 	/**
-	 * Create a new instance of the view, which
-	 * prints its output to System.out.
+	 * Create a view which prints to System.out.
 	 * @param user the User whose data is to be viewed
 	 */
 	public View(User user) {
@@ -26,8 +25,7 @@ public abstract class View {
 	}
 	
 	/**
-	 * Create a new instance of the view, which
-	 * prints its output to the specified output stream.
+	 * Create a view which prints to the specified output stream.
 	 * @param user the User whose data is to be viewed
 	 * @param ostream The output stream to print the view to
 	 */

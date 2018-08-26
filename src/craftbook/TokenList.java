@@ -5,6 +5,11 @@ public class TokenList {
 	private final String command;
 	private final String parameter;
 	
+	/**
+	 * @param u username token
+	 * @param c command token
+	 * @param p parameter token
+	 */
 	public TokenList(String u, String c, String p) {
 		username = u;
 		command = c;

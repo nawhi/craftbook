@@ -19,7 +19,6 @@ public class User {
 	protected Set<User> followers = new HashSet<>();
 	
 	/**
-	 * Create a new User.
 	 * @param h nonempty string of the new user's handle,
 	 * 		    which should not contain whitespace
 	 */
