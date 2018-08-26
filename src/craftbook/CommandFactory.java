@@ -51,6 +51,12 @@ public class CommandFactory {
 		return makeCommand(tokens.username, tokens.command, tokens.parameter);
 	}
 	
+	/**
+	 * Fetch the user with the specified handle, or create
+	 * them if they do not exist yet.
+	 * @param handle the handle of the user to find or create
+	 * @return reference to User with the given handle 
+	 */
 	private User ensureUser(String handle) {
 		if (model.hasUser(handle))
 			return model.getUser(handle);
