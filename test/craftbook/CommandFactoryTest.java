@@ -46,4 +46,15 @@ public class CommandFactoryTest {
 		assertTrue(p instanceof ProfileCommand);
 	}
 	
+	@Test
+	public void shouldReturnWallCommandWithWallParameters() {
+		Command w = factory.makeCommand("dave", "wall", "");
+		assertTrue(w instanceof WallCommand);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void shouldFailOnInvalidCommand() {
+		factory.makeCommand("dave", "invalid", "");
+	}
+	
 }

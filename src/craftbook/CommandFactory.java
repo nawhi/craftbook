@@ -30,10 +30,15 @@ public class CommandFactory {
 		if (commandText.isEmpty())
 			return new ProfileCommand(user);
 		
-		if (commandText.equals("->"))
+		switch(commandText)
+		{
+		case "->":
 			return new PostCommand(user, arg);
-		
-		throw new IllegalArgumentException("Could not understand parameters");
+		case "wall":
+			return new WallCommand(user);
+		default:
+			throw new IllegalArgumentException("Unrecognised command: " + commandText);
+		}
 	}
 	
 	public Command makeCommand(TokenList tokens) {
