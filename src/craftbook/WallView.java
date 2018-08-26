@@ -21,10 +21,6 @@ import java.util.List;
  */
 public class WallView extends View {
 
-	public WallView(User user) {
-		super(user);
-	}
-	
 	public WallView(User user, PrintStream ostream) {
 		super(user, ostream);
 	}

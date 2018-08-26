@@ -2,6 +2,8 @@ package craftbook;
 
 import static org.junit.Assert.*;
 
+import java.io.PrintStream;
+import java.io.OutputStream;
 import java.time.Instant;
 
 import org.junit.Test;
@@ -16,8 +18,8 @@ class DummyWallView extends WallView {
 
 	public static final Instant TIME = Instant.ofEpochSecond(10);
 	
-	public DummyWallView(User user) {
-		super(user);
+	public DummyWallView(User user, PrintStream ostream) {
+		super(user, ostream);
 	}
 	
 	@Override 
@@ -36,12 +38,15 @@ public class WallViewTest {
 	 */
 	
 	private static final Instant POST_TIME = Instant.ofEpochSecond(10);
+	private static final PrintStream DUMMY_STDOUT = new PrintStream(new OutputStream() {
+		@Override public void write(int b) {}
+	});
 	
 	private DummyUser dave = new DummyUser("dave");
 	private DummyUser dan = new DummyUser("dan");
 	private DummyUser bill = new DummyUser("bill");
 	
-	private DummyWallView view = new DummyWallView(dave);
+	private DummyWallView view = new DummyWallView(dave, DUMMY_STDOUT);
 	
 	@Test
 	public void emptyProfileGivesEmptyString() {

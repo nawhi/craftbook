@@ -8,7 +8,7 @@ public class WallCommand extends Command {
 
 	@Override
 	public void execute() {
-		WallView view = new WallView(targetUser);
+		WallView view = new WallView(targetUser, System.out);
 		view.show();
 	}
 

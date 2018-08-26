@@ -20,7 +20,7 @@ public class ProfileCommand extends Command {
 
 	@Override
 	public void execute() {
-		 ProfileView pview = new ProfileView(targetUser);
+		 ProfileView pview = new ProfileView(targetUser, System.out);
 		 pview.show();
 	}
 

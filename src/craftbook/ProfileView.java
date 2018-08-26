@@ -20,10 +20,6 @@ import java.util.List;
  */
 public class ProfileView extends View {
 
-	public ProfileView(User user) {
-		super(user);
-	}
-	
 	public ProfileView(User user, PrintStream ostream) {
 		super(user, ostream);
 	}
