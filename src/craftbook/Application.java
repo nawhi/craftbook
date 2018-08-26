@@ -66,7 +66,7 @@ public class Application {
 		} catch (Exception ex) {
 			// Don't let these crash the program - they may be user error
 			if (ex.getMessage() != null)
-				System.out.println("Couldn't parse input: " + ex.getMessage());
+				System.out.println(ex.getMessage());
 			else
 				System.out.println("Unexpected " + ex.getClass().getName() + " encountered while parsing input");
 			return EventLoopState.Continue;
