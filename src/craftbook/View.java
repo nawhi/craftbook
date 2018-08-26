@@ -37,7 +37,7 @@ public abstract class View {
 	 * Print the content of the view to the view's output stream.
 	 */
 	public void show() {
-		System.out.println(calculate());
+		outStream.println(calculate());
 	}
 	
 	/**
