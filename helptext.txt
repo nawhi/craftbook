@@ -5,8 +5,20 @@ There are two commands:
 
 2. View all posts on a user's profile
      <username>
-     
-Example:
+    
+3. Follow another user:
+     <username> follows <username>
+
+4. View a user's 'wall', including all their posts
+   and all their followers' posts:
+     <username> wall
+
+Example ('>' means user input):
     > dan -> Nice weather today
     > dan
     Nice weather today (1 second ago)
+    > dave -> Hi Dan
+    > dave follows dan
+    > dave wall
+    dave - Hi Dan (1 second ago)
+    dan - Nice weather today (5 seconds ago)
