@@ -2,6 +2,8 @@ package craftbook;
 
 import static org.junit.Assert.*;
 
+import java.util.NoSuchElementException;
+
 import org.junit.Test;
 
 public class CommandFactoryTest {
@@ -21,11 +23,31 @@ public class CommandFactoryTest {
 	 */
 	
 	@Test
-	public void nonexistentUserShouldBeCreated() {
-		factory.makeCommand("dave", "", "");
+	public void nonexistentUserShouldBeCreatedWhenPosting() {
+		factory.makeCommand("dave", "->", "Hello World");
 		assertTrue(model.hasUser("dave"));
-		factory.makeCommand("dave", "follows", "dan");
-		assertTrue(model.hasUser("dan"));
+	}
+	
+	@Test(expected=NoSuchElementException.class)
+	public void shouldFailToFollowNonexistentSourceUser() {
+		model.createUser("dan");
+		factory.makeCommand("nobody", "follows", "dan");
+	}
+	
+	@Test(expected=NoSuchElementException.class)
+	public void shouldFailToFollowNonexistentTargetUser() {
+		model.createUser("dan");
+		factory.makeCommand("dan", "follows", "nobody");
+	}
+	
+	@Test(expected=NoSuchElementException.class)
+	public void profileOnNonexistentUserShouldFail() {
+		factory.makeCommand("nobody", "", "");
+	}
+	
+	@Test(expected=NoSuchElementException.class)
+	public void wallOnNonexistentUserShouldFail() {
+		factory.makeCommand("nobody", "wall", "");
 	}
 	
 	@Test
@@ -44,24 +66,28 @@ public class CommandFactoryTest {
 	
 	@Test
 	public void shouldReturnProfileCommandWithProfileParameters() {
+		model.createUser("dave");
 		Command p = factory.makeCommand("dave", "", "");
 		assertTrue(p instanceof ProfileCommand);
 	}
 	
 	@Test
 	public void shouldReturnWallCommandWithWallParameters() {
+		model.createUser("dave");
 		Command w = factory.makeCommand("dave", "wall", "");
 		assertTrue(w instanceof WallCommand);
 	}
 	
 	@Test
 	public void shouldReturnFollowCommandWithFollowParameters() {
+		model.createUser("dave");
+		model.createUser("dan");
 		Command f = factory.makeCommand("dave", "follows", "dan");
 		assertTrue(f instanceof FollowCommand);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void shouldFailOnInvalidCommand() {
+	public void invalidCommandShouldFail() {
 		factory.makeCommand("dave", "invalid", "");
 	}
 	

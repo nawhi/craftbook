@@ -19,40 +19,47 @@ public class CommandFactory {
 	/**
 	 * Create a new Command formed from the specified parameters.
 	 * @param user The nonempty handle of the user for which to execute 
-	 *        the command.  If this user does not yet exist in the model,
-	 *        it will e 
+	 *        the command.  If this user does not exist yet and the command
+	 *        is Post, the user will be created, otherwise an exception
+	 *        will be thrown.
 	 * @param commandType The text of the command itself, which may be
 	 *        the empty string.
 	 * @param arg The argument supplied with the command, which may be
 	 *        the empty string.
-	 * @return
+	 * @return Command instance representing the specified parameters
+	 * @throws IllegalArgumentException if there was an issue with the parameters
+	 *         that meant a command could not be created
 	 */
 	public Command makeCommand(String userHandle, String commandText, String arg) {
-		User user = ensureUser(userHandle);
-		
-		if (commandText.isEmpty())
-			return new ProfileCommand(user);
-		
 		switch(commandText)
 		{
 		case "->":
-			return new PostCommand(user, arg);
-		case "wall":
-			return new WallCommand(user);
+			return new PostCommand(ensureUser(userHandle), arg);
+		case "":
+			return new ProfileCommand(model.getUser(userHandle));
 		case "follows":
-			return new FollowCommand(user, ensureUser(arg));
+			return new FollowCommand(model.getUser(userHandle), model.getUser(arg));
+		case "wall":
+			return new WallCommand(model.getUser(userHandle));
 		default:
 			throw new IllegalArgumentException("Unrecognised command: " + commandText);
 		}
 	}
 	
+	/**
+	 * Create a new Command formed from the specified token list.
+	 * @param tokens the command tokens
+	 * @return Command instance representing the specified parameters
+	 * @throws IllegalArgumentException if there was an issue with the parameters
+	 *         that meant a command could not be created
+	 */
 	public Command makeCommand(TokenList tokens) {
 		return makeCommand(tokens.getUsername(), tokens.getCommand(), tokens.getParameter());
 	}
 	
 	/**
 	 * Fetch the user with the specified handle, or create
-	 * them if they do not exist yet.
+	 * one if not found.
 	 * @param handle the handle of the user to find or create
 	 * @return reference to User with the given handle 
 	 */
