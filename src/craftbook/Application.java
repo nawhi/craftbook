@@ -70,7 +70,7 @@ public class Application {
 			if (ex.getMessage() != null)
 				System.err.println("Couldn't parse input:" + ex.getMessage());
 			else
-				System.err.println("Unexpected " + ex.getClass().getName() + " encountered");
+				System.err.println("Unexpected " + ex.getClass().getName() + " encountered while parsing input");
 			return EventLoopState.CONTINUE;
 		}
 		
