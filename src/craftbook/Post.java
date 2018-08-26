@@ -10,7 +10,7 @@ import java.time.Instant;
  */
 public class Post implements Comparable<Post> {
 	
-	private final String message;
+	private final String text;
 	private final User author;
 	private final Instant timestamp;
 
@@ -23,7 +23,7 @@ public class Post implements Comparable<Post> {
 	public Post(String msg, Instant ts, User u) {
 		if (msg.isEmpty())
 			throw new IllegalArgumentException("Cannot post an empty message");
-		message = msg;
+		text = msg;
 		author = u;
 		timestamp = ts;
 	}
@@ -42,8 +42,8 @@ public class Post implements Comparable<Post> {
 	/**
 	 * @return the text content of the post
 	 */
-	public String getMessage() { 
-		return message;
+	public String getText() {
+		return text;
 	}
 	
 	/**

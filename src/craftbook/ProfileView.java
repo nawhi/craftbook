@@ -41,7 +41,7 @@ public class ProfileView extends View {
 			result.append(
 				String.format(
 					"%s (%s ago)",
-					post.getMessage(),
+					post.getText(),
 					calcTimespan(post.getTimestamp(), getCurrentTime())
 				)
 			);

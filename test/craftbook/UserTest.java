@@ -39,7 +39,7 @@ public class UserTest {
 	@Test
 	public void getPostsOnePostReturnsPost() {
 		dave.post("hello world");
-		assertEquals("hello world", dave.getPosts().get(0).getMessage());
+		assertEquals("hello world", dave.getPosts().get(0).getText());
 	}
 	
 	@Test
@@ -57,8 +57,8 @@ public class UserTest {
 		dave.post("1");
 		dave.post("2");
 		List<Post> posts = dave.getPosts();
-		assertEquals("1", posts.get(0).getMessage());
-		assertEquals("2", posts.get(1).getMessage());
+		assertEquals("1", posts.get(0).getText());
+		assertEquals("2", posts.get(1).getText());
 	}
 	
 	@Test
@@ -67,8 +67,8 @@ public class UserTest {
 		dave.post(msg);
 		dave.post(msg);
 		List<Post> posts = dave.getPosts();
-		assertEquals(msg, posts.get(0).getMessage());
-		assertEquals(msg, posts.get(1).getMessage());
+		assertEquals(msg, posts.get(0).getText());
+		assertEquals(msg, posts.get(1).getText());
 	}
 	
 	@Test(expected=IllegalArgumentException.class)

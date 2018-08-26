@@ -42,7 +42,7 @@ public class WallView extends View {
 				String.format(
 					"%s - %s (%s ago)", 
 					post.getAuthor().getHandle(),
-					post.getMessage(),
+					post.getText(),
 					calcTimespan(getCurrentTime(), post.getTimestamp())
 				)
 			);

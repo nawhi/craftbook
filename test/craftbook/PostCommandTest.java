@@ -23,7 +23,7 @@ public class PostCommandTest {
 		command.execute();
 		List<Post> posts = dave.getPosts();
 		assertEquals(1, posts.size());
-		assertEquals("Hello World", posts.get(0).getMessage());
+		assertEquals("Hello World", posts.get(0).getText());
 	}
 
 }
