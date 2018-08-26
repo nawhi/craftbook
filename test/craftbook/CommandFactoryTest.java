@@ -29,7 +29,7 @@ public class CommandFactoryTest {
 	@Test
 	public void existingUserShouldBeGrabbed() {
 		User dave1 = model.createUser("dave");
-		Command c = factory.makeCommand("dave", "->", "Hello World");
+		factory.makeCommand("dave", "->", "Hello World");
 		User dave2 = model.getUser("dave");
 		assertSame(dave1, dave2);
 	}
