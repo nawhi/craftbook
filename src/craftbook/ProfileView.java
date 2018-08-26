@@ -5,8 +5,7 @@ import java.util.List;
 
 /**
  * Class that produces a text-based view of a user's
- * profile and prints it to an output stream specified
- * in the constructor. 
+ * profile. 
  * This takes the form of a list of posts, most recent
  * first, and detail of how long ago the posts were
  * created.
