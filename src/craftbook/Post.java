@@ -11,8 +11,8 @@ import java.time.Instant;
 public class Post implements Comparable<Post> {
 	
 	private final String message;
+	private final User author;
 	private final Instant timestamp;
-	
 
 	/**
 	 * Create a new Post with the specified message,
@@ -20,11 +20,16 @@ public class Post implements Comparable<Post> {
 	 * @param msg the text content of the post
 	 * @param ts the time at which the post was created
 	 */
-	public Post(String msg, Instant ts) {
+	public Post(String msg, Instant ts, User u) {
 		if (msg.isEmpty())
 			throw new IllegalArgumentException("Cannot post an empty message");
 		message = msg;
+		author = u;
 		timestamp = ts;
+	}
+	
+	public User getAuthor() {
+		return author;
 	}
 
 	/**

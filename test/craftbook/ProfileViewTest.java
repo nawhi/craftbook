@@ -30,7 +30,7 @@ class DummyUser extends User {
 	 * @param timestamp time the post was created
 	 */
 	public void post(String message, Instant timestamp) {
-		posts.add(new Post(message, timestamp));
+		posts.add(new Post(message, timestamp, this));
 	}
 }
 

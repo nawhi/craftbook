@@ -10,18 +10,20 @@ import java.util.List;
 import org.junit.Test;
 
 public class PostTest {
+	
+	private User author = new User("dan");
 
 	@Test(expected=IllegalArgumentException.class)
 	public void postCannotHaveEmptyMessage() {
-		new Post("", Instant.EPOCH);
+		new Post("", Instant.EPOCH, author);
 	}
 	
 	@Test
 	public void postsCompareByTimestampEarliestFirst() {
-		Post p1 = new Post("foo", Instant.ofEpochSecond(1));
-		Post p2 = new Post("foo", Instant.ofEpochSecond(2));
-		Post p3 = new Post("foo", Instant.ofEpochSecond(3));
-		Post p4 = new Post("foo", Instant.ofEpochSecond(4));
+		Post p1 = new Post("foo", Instant.ofEpochSecond(1), author);
+		Post p2 = new Post("foo", Instant.ofEpochSecond(2), author);
+		Post p3 = new Post("foo", Instant.ofEpochSecond(3), author);
+		Post p4 = new Post("foo", Instant.ofEpochSecond(4), author);
 		List<Post> posts = Arrays.asList(p2, p1, p4, p3);
 		Collections.sort(posts);
 		assertSame(p1, posts.get(0));

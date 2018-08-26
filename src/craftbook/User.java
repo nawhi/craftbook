@@ -53,7 +53,7 @@ public class User {
 	 * @param message nonempty string of the text content of the post
 	 */
 	public void post(String message) {
-		posts.add(new Post(message, Instant.now()));
+		posts.add(new Post(message, Instant.now(), this));
 	}
 	
 	/**
