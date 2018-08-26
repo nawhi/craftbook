@@ -48,7 +48,7 @@ public class CommandFactory {
 	}
 	
 	public Command makeCommand(TokenList tokens) {
-		return makeCommand(tokens.username, tokens.command, tokens.parameter);
+		return makeCommand(tokens.getUsername(), tokens.getCommand(), tokens.getParameter());
 	}
 	
 	/**

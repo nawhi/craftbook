@@ -1,17 +1,30 @@
 package craftbook;
 
 public class TokenList {
-	public String username;
-	public String command;
-	public String parameter;
+	private final String username;
+	private final String command;
+	private final String parameter;
 	
 	public TokenList(String u, String c, String p) {
 		username = u;
 		command = c;
 		parameter = p;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getCommand() {
+		return command;
+	}
+
+	public String getParameter() {
+		return parameter;
+	}
 	
-	@Override public boolean equals(Object other) {
+	@Override 
+	public boolean equals(Object other) {
 		if (other instanceof TokenList) {
 			return username.equals(((TokenList)other).username)
 				&& command.equals(((TokenList)other).command)
