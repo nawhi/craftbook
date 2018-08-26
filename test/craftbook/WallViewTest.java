@@ -100,12 +100,15 @@ public class WallViewTest {
 	@Test
 	public void timeOfFollowingDoesntInfluenceResult() {
 		dave.follow(bill);
-		bill.post("Hello", POST_TIME);
-		assertEquals("bill - Hello (moments ago)", view.calculate());
+		bill.post("Epoch+8", Instant.ofEpochSecond(8));
+		assertEquals("bill - Epoch+8 (2 seconds ago)", view.calculate());
 		
-		dan.post("Hello", POST_TIME);
+		dan.post("Epoch+9", Instant.ofEpochSecond(9));
 		dave.follow(dan);
-		assertEquals("dan - Hello (moments ago)", view.calculate());
+		assertEquals(
+			"dan - Epoch+9 (1 second ago)\nbill - Epoch+8 (2 seconds ago)", 
+			view.calculate()
+		);
 	}
 
 }
