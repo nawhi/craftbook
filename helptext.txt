@@ -22,3 +22,6 @@ Example ('>' means user input):
     > dave wall
     dave - Hi Dan (1 second ago)
     dan - Nice weather today (5 seconds ago)
+    
+The application starts with no users: users are
+created when they post their first message.  
