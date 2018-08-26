@@ -1,6 +1,8 @@
 package craftbook;
 
 import java.io.PrintStream;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Class which produces a text-based view of an
@@ -29,7 +31,32 @@ public class WallView extends View {
 
 	@Override
 	public String calculate() {
-		throw new RuntimeException("TODO");
+		StringBuilder result = new StringBuilder();
+		List<Post> posts = makePostList();
+		Collections.sort(posts);
+		
+		// Iterate backwards to present most recent first
+		for (int i = posts.size() - 1; i >= 0; --i) {
+			Post post = posts.get(i);
+			result.append(
+				String.format(
+					"%s - %s (%s ago)", 
+					post.getAuthor().getHandle(),
+					post.getMessage(),
+					calcTimespan(getCurrentTime(), post.getTimestamp())
+				)
+			);
+			if (i > 0)
+				result.append('\n');
+		}
+		return result.toString();
+	}
+	
+	private List<Post> makePostList() {
+		List<Post> posts = targetUser.getPosts();
+		for (User u: targetUser.getFollowers())
+			posts.addAll(u.getPosts());
+		return posts;
 	}
 
 }
