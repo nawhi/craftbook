@@ -36,7 +36,7 @@ public class Model {
 	public User getUser(String handle) {
 		User u = users.get(handle);
 		if (u == null)
-			throw new NoSuchElementException();
+			throw new NoSuchElementException("User '" + handle + "' does not exist");
 		return u;
 	}
 	
