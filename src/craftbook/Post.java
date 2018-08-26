@@ -19,6 +19,7 @@ public class Post implements Comparable<Post> {
 	 * timestamped with the current time.
 	 * @param msg the text content of the post
 	 * @param ts the time at which the post was created
+	 * @param u the author of the post
 	 */
 	public Post(String msg, Instant ts, User u) {
 		if (msg.isEmpty())
