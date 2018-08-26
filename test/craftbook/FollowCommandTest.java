@@ -19,8 +19,8 @@ public class FollowCommandTest {
 	@Test
 	public void followCommandSuccessfullyAddsFollower() {
 		command.execute();
-		assertEquals(1, dave.getFollowers().size());
-		assertTrue(dave.getFollowers().contains(dan));
+		assertEquals(1, dave.getFollowedUsers().size());
+		assertTrue(dave.getFollowedUsers().contains(dan));
 	}
 
 }

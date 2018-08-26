@@ -54,7 +54,7 @@ public class WallView extends View {
 	
 	private List<Post> makePostList() {
 		List<Post> posts = targetUser.getPosts();
-		for (User u: targetUser.getFollowers())
+		for (User u: targetUser.getFollowedUsers())
 			posts.addAll(u.getPosts());
 		return posts;
 	}

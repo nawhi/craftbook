@@ -70,7 +70,7 @@ public class User {
 	 * @return a Set containing references to all the users 
 	 *         followed by this user
 	 */
-	public Set<User> getFollowers() {
+	public Set<User> getFollowedUsers() {
 		return new HashSet<>(followers);
 	}
 }

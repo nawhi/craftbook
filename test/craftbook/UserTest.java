@@ -78,15 +78,15 @@ public class UserTest {
 	
 	@Test
 	public void getFollowersNoFollowersReturnsEmptySet() {
-		assertTrue(dave.getFollowers().isEmpty());
+		assertTrue(dave.getFollowedUsers().isEmpty());
 	}
 	
 	@Test
 	public void userCanFollowOneUser() {
 		User dan = new User("dan");
 		dave.follow(dan);
-		assertEquals(1, dave.getFollowers().size());
-		assertTrue(dave.getFollowers().contains(dan));
+		assertEquals(1, dave.getFollowedUsers().size());
+		assertTrue(dave.getFollowedUsers().contains(dan));
 	}
 	
 	@Test
@@ -94,8 +94,8 @@ public class UserTest {
 		User dan = new User("dan");
 		dave.follow(dan);
 		dave.follow(dan);
-		assertEquals(1, dave.getFollowers().size());
-		assertTrue(dave.getFollowers().contains(dan));
+		assertEquals(1, dave.getFollowedUsers().size());
+		assertTrue(dave.getFollowedUsers().contains(dan));
 	}
 	
 	@Test
@@ -104,9 +104,9 @@ public class UserTest {
 		User adam = new User("adam");
 		dave.follow(dan);
 		dave.follow(adam);
-		assertEquals(2, dave.getFollowers().size());
-		assertTrue(dave.getFollowers().contains(dan));
-		assertTrue(dave.getFollowers().contains(adam));
+		assertEquals(2, dave.getFollowedUsers().size());
+		assertTrue(dave.getFollowedUsers().contains(dan));
+		assertTrue(dave.getFollowedUsers().contains(adam));
 	}
 	
 	@Test
@@ -114,9 +114,9 @@ public class UserTest {
 		User dan = new User("dan");
 		dave.follow(dan);
 		dan.follow(dave);
-		assertEquals(1, dave.getFollowers().size());
-		assertTrue(dave.getFollowers().contains(dan));
-		assertEquals(1, dan.getFollowers().size());
-		assertTrue(dan.getFollowers().contains(dave));
+		assertEquals(1, dave.getFollowedUsers().size());
+		assertTrue(dave.getFollowedUsers().contains(dan));
+		assertEquals(1, dan.getFollowedUsers().size());
+		assertTrue(dan.getFollowedUsers().contains(dave));
 	}
 }
