@@ -95,7 +95,6 @@ public class Application {
 				throw new RuntimeException(ex);
 			}			
 		}
-		
 		System.out.println(helpText);
 	}
 	
@@ -109,9 +108,6 @@ public class Application {
 	}
 
 	public static void main(String[] args) {
-		
-		// TODO: Handle SIGINT
-		
 		Application app = new Application();
 		int code = app.runEventLoop();
 		System.exit(code);
