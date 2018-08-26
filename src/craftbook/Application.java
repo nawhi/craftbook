@@ -95,8 +95,7 @@ public class Application {
 		if (helpText.isEmpty()) {
 			try {
 				List<String> lines = Files.readAllLines(Paths.get(HELPTEXT_FILE));
-				for (String line: lines)
-					System.out.println(line);
+				helpText = String.join("\n", lines);
 			} catch (IOException ex) {
 				// it's in the source tree, it shouldn't be missing!
 				throw new RuntimeException(ex);

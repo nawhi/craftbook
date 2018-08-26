@@ -1,3 +1,12 @@
-CraftBook help
+-- CraftBook Help --
+There are two commands:
+1. Post a message to a user's profile
+     <username> -> <message>
 
-There are two commands with syntax as follows:
+2. View all posts on a user's profile
+     <username>
+     
+Example:
+    > dan -> Nice weather today
+    > dan
+    Nice weather today (1 second ago)
