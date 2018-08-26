@@ -30,6 +30,6 @@ public class TokenList {
 				&& command.equals(((TokenList)other).command)
 				&& parameter.equals(((TokenList)other).parameter);
 		}
-		return false;
+		return super.equals(other);
 	}
 }
