@@ -5,9 +5,12 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Class which produces a text-based view of an
- * aggregated list of a user's profile, and all
- * the profiles of other users followed by it.
+ * Class which produces a text-based view of
+ * all posts made by a user and any users that
+ * it follows.
+ * This takes the form of a list of posts ordered
+ * most recent first, the posts' authors and detail
+ * of how long ago the posts were created.
  * 
  *  Example:
  * 

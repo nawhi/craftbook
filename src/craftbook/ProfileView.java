@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * Class that produces a text-based view of a user's
  * profile. 
- * This takes the form of a list of posts, most recent
- * first, and detail of how long ago the posts were
- * created.
+ * This takes the form of a list of all posts for that 
+ * user, most recent first, and detail of how long ago
+ * the posts were created.
  * 
  *  Example:
  *  
