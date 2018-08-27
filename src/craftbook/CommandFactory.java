@@ -1,5 +1,7 @@
 package craftbook;
 
+import java.util.NoSuchElementException;
+
 /**
  * Class which creates and returns the
  * right Command for the given user input tokens.
@@ -36,18 +38,35 @@ public class CommandFactory {
 		switch(commandText)
 		{
 		case Commands.POST:
-			User user = model.hasUser(userHandle) 
-						? model.getUser(userHandle) 
+			User user = model.hasUser(userHandle)
+						? model.getUser(userHandle)
 						: model.createUser(userHandle);
 			return new PostCommand(user, arg);
 		case Commands.PROFILE:
-			return new ProfileCommand(model.getUser(userHandle));
+			return new ProfileCommand(fetchUser(userHandle));
 		case Commands.FOLLOW:
-			return new FollowCommand(model.getUser(userHandle), model.getUser(arg));
+			return new FollowCommand(fetchUser(userHandle), fetchUser(arg));
 		case Commands.WALL:
-			return new WallCommand(model.getUser(userHandle));
+			return new WallCommand(fetchUser(userHandle));
 		default:
 			throw new IllegalArgumentException("Unrecognised command: " + commandText);
+		}
+	}
+	
+	/**
+	 * Wrapper around Model.getUser() which throws a more user-friendly
+	 * error message.
+	 * @param handle the handle of the user to find
+	 * @return reference to the User object with the given handle
+	 */
+	private User fetchUser(String handle) {
+		try {
+			return model.getUser(handle);
+		} catch (NoSuchElementException ex) {
+			throw new NoSuchElementException(
+				"User '" + handle + "' doesn't exist yet!\n"
+				+ "Users are created when they post their first message."
+			);
 		}
 	}
 }
