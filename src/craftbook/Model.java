@@ -17,21 +17,18 @@ public class Model {
 	private Map<String, User> users = new HashMap<>();
 	
 	/**
-	 * Find out whether the user with the given handle
-	 * already exists or not.
 	 * @param handle the handle of the user to find
-	 * @return true if the user has previously been
-	 * 		   created
+	 * @return true if a user with this handle exists,
+	 * 		   false otherwise
 	 */
 	public boolean hasUser(String handle) {
 		return users.containsKey(handle);
 	}
 	
 	/**
-	 * Get a user by their handle. Throws an exception
-	 * if the user does not exist.
-	 * @param handle handle of the user to find
-	 * @return reference to the User with the given handle
+	 * Get a pre-existing user by their handle.
+	 * @param handle the handle of the user to find
+	 * @return reference to the User object with the given handle
 	 */
 	public User getUser(String handle) {
 		User u = users.get(handle);
@@ -41,9 +38,8 @@ public class Model {
 	}
 	
 	/**
-	 * Create a new user in the application.
 	 * @param handle handle of the new user, which must be
-	 * 				 different to the handles of all existing
+	 * 				 different to the handles of all other
 	 * 				 users
 	 * @return reference to the User object that was created
 	 */
