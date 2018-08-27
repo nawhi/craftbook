@@ -27,12 +27,17 @@ public class Post implements Comparable<Post> {
 		timestamp = ts;
 	}
 	
+	/**
+	 * @return the author of the post
+	 */
 	public User getAuthor() {
 		return author;
 	}
 
 	/**
-	 * @return the Instant representing the post's timestamp 
+	 * @return the Instant representing the timestamp with 
+	 *         which the post was created
+	 *         
 	 */
 	public Instant getTimestamp() {
 		return timestamp;
@@ -46,9 +51,8 @@ public class Post implements Comparable<Post> {
 	}
 	
 	/**
-	 * Private overridable method which creates the timestamp
-	 * for the post.
-	 * @return the Instant representing the post's timestamp
+	 * @return the Instant representing the timestamp that
+	 *         this post should have
 	 */
 	protected Instant makeTimestamp() {
 		return Instant.now();
