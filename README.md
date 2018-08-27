@@ -43,7 +43,9 @@ Alice - I love the weather today (5 minutes ago)
 * The user details are stored in memory and won't persist through a program restart!
 
 ## Compilation
-### Linux
+### Unix (Linux/Mac)
+Requires a JDK to be installed.
+
 From the command line:
 
 1. Ensure you're in the root directory of the project
