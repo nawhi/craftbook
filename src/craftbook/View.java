@@ -6,8 +6,8 @@ import java.time.Instant;
 
 /**
  * Base class for text-based views of user data, which
- * are printed to System.out, or the custom PrintStream
- * provided in the constructor, when show() is called.
+ * are printed to the PrintStream object
+ * provided in the constructor when show() is called.
  * @author nick
  */
 public abstract class View {
