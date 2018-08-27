@@ -7,6 +7,13 @@ package craftbook;
  *
  */
 public class CommandFactory {
+	private class Commands {
+		private static final String POST = "->";
+		private static final String PROFILE = "";
+		private static final String FOLLOW = "follows";
+		private static final String WALL = "wall";
+	}
+	
 	private Model model;
 	
 	/**
@@ -33,16 +40,16 @@ public class CommandFactory {
 	public Command makeCommand(String userHandle, String commandText, String arg) {
 		switch(commandText)
 		{
-		case "->":
+		case Commands.POST:
 			User user = model.hasUser(userHandle) 
 						? model.getUser(userHandle) 
 						: model.createUser(userHandle);
 			return new PostCommand(user, arg);
-		case "":
+		case Commands.PROFILE:
 			return new ProfileCommand(model.getUser(userHandle));
-		case "follows":
+		case Commands.FOLLOW:
 			return new FollowCommand(model.getUser(userHandle), model.getUser(arg));
-		case "wall":
+		case Commands.WALL:
 			return new WallCommand(model.getUser(userHandle));
 		default:
 			throw new IllegalArgumentException("Unrecognised command: " + commandText);
