@@ -32,6 +32,7 @@ public class CommandFactory {
 		String userHandle = tokens.getUsername();
 		String arg = tokens.getParameter();
 		String commandText = tokens.getCommand();
+
 		switch(commandText)
 		{
 		case Commands.POST:
