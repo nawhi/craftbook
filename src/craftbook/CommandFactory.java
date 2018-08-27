@@ -1,8 +1,8 @@
 package craftbook;
 
 /**
- * Class whose makeCommand() method creates and returns the
- * right Command for the given action.
+ * Class which creates and returns the
+ * right Command for the given user input tokens.
  * @author nick
  *
  */
