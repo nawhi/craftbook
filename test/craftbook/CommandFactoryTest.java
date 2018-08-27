@@ -24,57 +24,57 @@ public class CommandFactoryTest {
 	
 	@Test
 	public void nonexistentUserShouldBeCreatedWhenPosting() {
-		factory.makeCommand("dave", "->", "Hello World");
+		factory.makeCommand(new TokenList("dave", "->", "Hello World"));
 		assertTrue(model.hasUser("dave"));
 	}
 	
 	@Test(expected=NoSuchElementException.class)
 	public void shouldFailToFollowNonexistentSourceUser() {
 		model.createUser("dan");
-		factory.makeCommand("nobody", "follows", "dan");
+		factory.makeCommand(new TokenList("nobody", "follows", "dan"));
 	}
 	
 	@Test(expected=NoSuchElementException.class)
 	public void shouldFailToFollowNonexistentTargetUser() {
 		model.createUser("dan");
-		factory.makeCommand("dan", "follows", "nobody");
+		factory.makeCommand(new TokenList("dan", "follows", "nobody"));
 	}
 	
 	@Test(expected=NoSuchElementException.class)
 	public void profileOnNonexistentUserShouldFail() {
-		factory.makeCommand("nobody", "", "");
+		factory.makeCommand(new TokenList("nobody", "", ""));
 	}
 	
 	@Test(expected=NoSuchElementException.class)
 	public void wallOnNonexistentUserShouldFail() {
-		factory.makeCommand("nobody", "wall", "");
+		factory.makeCommand(new TokenList("nobody", "wall", ""));
 	}
 	
 	@Test
 	public void existingUserShouldBeGrabbed() {
 		User dave1 = model.createUser("dave");
-		factory.makeCommand("dave", "->", "Hello World");
+		factory.makeCommand(new TokenList("dave", "->", "Hello World"));
 		User dave2 = model.getUser("dave");
 		assertSame(dave1, dave2);
 	}
 	
 	@Test
 	public void shouldReturnPostCommandWithPostParameters() {
-		Command c = factory.makeCommand("dave", "->", "Hello World");
+		Command c = factory.makeCommand(new TokenList("dave", "->", "Hello World"));
 		assertTrue(c instanceof PostCommand);
 	}
 	
 	@Test
 	public void shouldReturnProfileCommandWithProfileParameters() {
 		model.createUser("dave");
-		Command p = factory.makeCommand("dave", "", "");
+		Command p = factory.makeCommand(new TokenList("dave", "", ""));
 		assertTrue(p instanceof ProfileCommand);
 	}
 	
 	@Test
 	public void shouldReturnWallCommandWithWallParameters() {
 		model.createUser("dave");
-		Command w = factory.makeCommand("dave", "wall", "");
+		Command w = factory.makeCommand(new TokenList("dave", "wall", ""));
 		assertTrue(w instanceof WallCommand);
 	}
 	
@@ -82,13 +82,13 @@ public class CommandFactoryTest {
 	public void shouldReturnFollowCommandWithFollowParameters() {
 		model.createUser("dave");
 		model.createUser("dan");
-		Command f = factory.makeCommand("dave", "follows", "dan");
+		Command f = factory.makeCommand(new TokenList("dave", "follows", "dan"));
 		assertTrue(f instanceof FollowCommand);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void invalidCommandShouldFail() {
-		factory.makeCommand("dave", "invalid", "");
+		factory.makeCommand(new TokenList("dave", "invalid", ""));
 	}
 	
 }

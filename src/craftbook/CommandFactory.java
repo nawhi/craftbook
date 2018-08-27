@@ -24,20 +24,14 @@ public class CommandFactory {
 	}
 	
 	/**
-	 * Create a new Command formed from the specified parameters.
-	 * @param user The nonempty handle of the user for which to execute 
-	 *        the command.  If this user does not exist yet and the command
-	 *        is Post, the user will be created, otherwise an exception
-	 *        will be thrown.
-	 * @param commandType The text of the command itself, which may be
-	 *        the empty string.
-	 * @param arg The argument supplied with the command, which may be
-	 *        the empty string.
+	 * Create a new Command formed from the specified token list.
+	 * @param tokens the command tokens
 	 * @return Command instance representing the specified parameters
-	 * @throws IllegalArgumentException if there was an issue with the parameters
-	 *         that meant a command could not be created
 	 */
-	public Command makeCommand(String userHandle, String commandText, String arg) {
+	public Command makeCommand(TokenList tokens) {
+		String userHandle = tokens.getUsername();
+		String arg = tokens.getParameter();
+		String commandText = tokens.getCommand();
 		switch(commandText)
 		{
 		case Commands.POST:
@@ -54,16 +48,5 @@ public class CommandFactory {
 		default:
 			throw new IllegalArgumentException("Unrecognised command: " + commandText);
 		}
-	}
-	
-	/**
-	 * Create a new Command formed from the specified token list.
-	 * @param tokens the command tokens
-	 * @return Command instance representing the specified parameters
-	 * @throws IllegalArgumentException if there was an issue with the parameters
-	 *         that meant a command could not be created
-	 */
-	public Command makeCommand(TokenList tokens) {
-		return makeCommand(tokens.getUsername(), tokens.getCommand(), tokens.getParameter());
 	}
 }
