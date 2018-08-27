@@ -13,7 +13,7 @@ There are two commands:
    and all their followers' posts:
      <username> wall
 
-Example ('>' means user input):
+Example ('>' is the prompt for user input):
     > dan -> Nice weather today
     > dan
     Nice weather today (1 second ago)
