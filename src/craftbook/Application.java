@@ -13,7 +13,7 @@ public class Application {
 		Exit
 	}
 	
-	private static final String HELPTEXT_FILE = "helptext.txt";
+	private static final String HELPTEXT_FILE = "resources/helptext.txt";
 	private static final String PROMPT = "> ";
 	
 	private static String helpText = "";
@@ -83,7 +83,7 @@ public class Application {
 		System.out.println("Type !quit to quit");
 	}
 	
-	private static void printHelp() {
+	public static void printHelp() {
 		if (helpText.isEmpty()) {
 			try {
 				List<String> lines = Files.readAllLines(Paths.get(HELPTEXT_FILE));
