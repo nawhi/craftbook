@@ -34,7 +34,10 @@ public class CommandFactory {
 		switch(commandText)
 		{
 		case "->":
-			return new PostCommand(ensureUser(userHandle), arg);
+			User user = model.hasUser(userHandle) 
+						? model.getUser(userHandle) 
+						: model.createUser(userHandle);
+			return new PostCommand(user, arg);
 		case "":
 			return new ProfileCommand(model.getUser(userHandle));
 		case "follows":
@@ -55,17 +58,5 @@ public class CommandFactory {
 	 */
 	public Command makeCommand(TokenList tokens) {
 		return makeCommand(tokens.getUsername(), tokens.getCommand(), tokens.getParameter());
-	}
-	
-	/**
-	 * Fetch the user with the specified handle, or create
-	 * one if not found.
-	 * @param handle the handle of the user to find or create
-	 * @return reference to User with the given handle 
-	 */
-	private User ensureUser(String handle) {
-		if (model.hasUser(handle))
-			return model.getUser(handle);
-		return model.createUser(handle);
 	}
 }
