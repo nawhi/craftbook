@@ -64,3 +64,12 @@ javac -d bin -sourcepath src src/craftbook/Application.java
 ```
 java -cp bin craftbook.Application
 ```
+
+### Compilation in Eclipse
+Tested in Eclipse Neon.
+Use the 'Import Projects from Git' wizard which can be found under File > Import... > Git > Projects from Git.
+Example steps through the wizard:
+1. Select "Clone URI".
+2. Type in the HTTPS address for the repository (check above).
+3. Choose an appropriate branch (probably master) in 'Select branches to clone'.
+4. Keep clicking through the wizard, and Eclipse should do the rest.
