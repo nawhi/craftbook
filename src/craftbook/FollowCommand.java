@@ -5,8 +5,7 @@ public class FollowCommand extends Command {
 	private final User userToFollow;
 	
 	/**
-	 * Create a new instance of FollowCommand.
-	 * @param u the user for whom to execute the command
+	 * @param u the user on whom to execute the command
 	 * @param t the user who is to be followed by u
 	 */
 	public FollowCommand(User u, User t) {
