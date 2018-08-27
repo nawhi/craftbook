@@ -43,7 +43,7 @@ Alice - I love the weather today (5 minutes ago)
 * The user details are stored in memory and won't persist through a program restart!
 
 ## Compilation
-### Unix (Linux/Mac)
+### Command-line compilation (Linux/Mac)
 Requires a JDK to be installed.
 
 From the command line:
@@ -52,11 +52,15 @@ From the command line:
 ```
 cd /path/to/CraftBook
 ```
-2. Run the Java compiler, defining the directory to put the compiled classes in, the path with the source files and the file with the static main() entry point:
+2. Make the directory for the binary, if it doesn't already exist: 
+```
+mkdir -p bin
+```
+3. Run the Java compiler, defining the directory to put the compiled classes in, the path with the source files and the file with the static main() entry point:
 ```
 javac -d bin -sourcepath src src/craftbook/Application.java
 ```
-3. Run the compiled solution using the directory you just compiled into as the classpath:
+4. Run the compiled solution using the directory you just compiled into as the classpath:
 ```
 java -cp bin craftbook.Application
 ```
