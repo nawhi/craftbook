@@ -73,3 +73,5 @@ Example steps through the wizard:
 2. Type in the HTTPS address for the repository (check above).
 3. Choose an appropriate branch (probably master) in 'Select branches to clone'.
 4. Keep clicking through the wizard, and Eclipse should do the rest.
+
+You should then be able to run the application, or the tests if you have JUnit installed, from within Eclipse.
