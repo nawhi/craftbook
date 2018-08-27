@@ -6,6 +6,12 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Application class containing the main entry point
+ * and event loop for the program.
+ * @author nick
+ *
+ */
 public class Application {
 	
 	public enum EventLoopState {
