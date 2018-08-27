@@ -32,14 +32,15 @@ public final class CommandParser {
 		if (tokens.get(0).isEmpty())
 			throw new ParseException("No username found", 0);
 		
-		String username, command, parameter;
-		username = tokens.get(0);
+		String username = tokens.get(0);
 		
+		String command;
 		if (tokens.size() > 1)
 			command = tokens.get(1);
 		else
 			command = "";
 		
+		String parameter;
 		if (tokens.size() > 2)
 			parameter = String.join(" ", tokens.subList(2, tokens.size()));
 		else
