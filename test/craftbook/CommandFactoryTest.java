@@ -83,6 +83,12 @@ public class CommandFactoryTest {
 		assertTrue(f instanceof FollowCommand);
 	}
 	
+	@Test
+	public void shouldReturnHelpCommandWithHelpParameters() {
+		Command h = factory.makeCommand(new TokenList("", "help", ""));
+		assertTrue(h instanceof HelpCommand);
+	}
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void invalidCommandShouldFail() {
 		factory.makeCommand(new TokenList("dave", "invalid", ""));

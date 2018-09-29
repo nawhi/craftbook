@@ -8,6 +8,7 @@ public class CommandFactory {
 		private static final String PROFILE = "";
 		private static final String FOLLOW = "follows";
 		private static final String WALL = "wall";
+		private static final String HELP = "help";
 	}
 	
 	private Model model;
@@ -34,6 +35,8 @@ public class CommandFactory {
 			return new FollowCommand(fetchUser(userHandle), fetchUser(arg));
 		case Commands.WALL:
 			return new WallCommand(fetchUser(userHandle));
+		case Commands.HELP:
+			return new HelpCommand();
 		default:
 			throw new IllegalArgumentException("Unrecognised command: " + commandText);
 		}

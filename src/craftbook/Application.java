@@ -1,9 +1,5 @@
 package craftbook;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -13,10 +9,7 @@ public class Application {
 		Exit
 	}
 	
-	private static final String HELPTEXT_FILE = "resources/helptext.txt";
 	private static final String PROMPT = "> ";
-	
-	private static String helpText = "";
 	
 	private Model model = new Model();
 	private CommandFactory commandFactory = new CommandFactory(model);
@@ -48,9 +41,6 @@ public class Application {
 		case "!quit":
 			System.out.println("Bye");
 			return EventLoopState.Exit;
-		case "!help":
-			printHelp();
-			return EventLoopState.Continue;
 		}
 		
 		TokenList tokens;
@@ -76,19 +66,6 @@ public class Application {
 		System.out.println("Welcome to CraftBook");
 		System.out.println("Type !help for help");
 		System.out.println("Type !quit to quit");
-	}
-	
-	public static void printHelp() {
-		if (helpText.isEmpty()) {
-			try {
-				List<String> lines = Files.readAllLines(Paths.get(HELPTEXT_FILE));
-				helpText = String.join("\n", lines);
-			} catch (IOException ex) {
-				// it's in the source tree, it shouldn't be missing!
-				throw new RuntimeException(ex);
-			}			
-		}
-		System.out.println(helpText);
 	}
 	
 	private static void dumpErrorDetails(Exception ex) {

@@ -59,10 +59,5 @@ public class ApplicationTest {
 	public void continuesOnInvalidInput() {
 		assertEquals(EventLoopState.Continue, app.handleInput("foo FOO zzzz 123"));
 	}
-	
-	@Test
-	public void helpTextFileCanBeOpenedCorrectly() {
-		Application.printHelp();
-	}
 
 }

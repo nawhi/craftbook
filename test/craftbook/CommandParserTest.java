@@ -20,6 +20,11 @@ public class CommandParserTest {
 	}
 	
 	@Test
+	public void getTokensHandlesHelpCommandCorrectly() throws Exception {
+		assertEquals(new TokenList("", "help", ""), CommandParser.parse("!help"));
+	}
+	
+	@Test
 	public void leadingAndTrailingWhitespaceIsStripped() throws Exception {
 		assertEquals(
 			new TokenList("dave", "->", "Hello world"),
