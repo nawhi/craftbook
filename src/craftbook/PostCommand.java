@@ -1,11 +1,12 @@
 package craftbook;
 
-public class PostCommand extends Command {
+public class PostCommand implements Command {
 	
+	private User targetUser;
 	private String message;
 	
 	public PostCommand(User u, String msg) {
-		super(u);
+		targetUser = u;
 		message = msg;
 	}
 

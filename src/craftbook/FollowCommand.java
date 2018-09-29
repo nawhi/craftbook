@@ -1,11 +1,12 @@
 package craftbook;
 
-public class FollowCommand extends Command {
+public class FollowCommand implements Command {
 
+	private final User targetUser;
 	private final User userToFollow;
 	
 	public FollowCommand(User u, User t) {
-		super(u);
+		targetUser = u;
 		userToFollow = t;
 	}
 

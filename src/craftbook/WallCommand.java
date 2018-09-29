@@ -1,9 +1,11 @@
 package craftbook;
 
-public class WallCommand extends Command {
+public class WallCommand implements Command {
 
+	private User targetUser;
+	
 	public WallCommand(User u) {
-		super(u);
+		targetUser = u;
 	}
 
 	@Override

@@ -1,9 +1,11 @@
 package craftbook;
 
-public class ProfileCommand extends Command {
+public class ProfileCommand implements Command {
+	
+	private User targetUser;
 	
 	protected ProfileCommand(User u) {
-		super(u);
+		targetUser = u;
 	}
 
 	@Override
