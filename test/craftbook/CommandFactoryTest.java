@@ -12,9 +12,6 @@ public class CommandFactoryTest {
 	private CommandFactory factory = new CommandFactory(model);
 	
 	/*
-	 * Checks that Command.from() works
-	 * as it should.
-	 * 
 	 * username, ->, message        PostCommand
 	 * username, "", ""             ProfileCommand
 	 * 

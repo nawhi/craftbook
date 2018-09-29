@@ -6,12 +6,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Application class containing the main entry point
- * and event loop for the program.
- * @author nick
- *
- */
 public class Application {
 	
 	public enum EventLoopState {
@@ -44,12 +38,7 @@ public class Application {
 			return 1;
 		}
 	}
-	
-	/**
-	 * @param input a line of input from the user
-	 * @return an EventLoopState indicating what the
-	 *         outcome of the input was for the program
-	 */
+
 	public EventLoopState handleInput(String input) {
 		switch(input)
 		{

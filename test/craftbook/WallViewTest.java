@@ -8,12 +8,6 @@ import java.time.Instant;
 
 import org.junit.Test;
 
-/**
- * Minimal WallView mock with current time fixed to
- * 10 seconds after the epoch.
- * @author nick
- *
- */
 class DummyWallView extends WallView {
 
 	public static final Instant TIME = Instant.ofEpochSecond(10);
@@ -30,13 +24,6 @@ class DummyWallView extends WallView {
 
 public class WallViewTest {
 
-	/*
-	 * Things to test:
-	 * - user following another user with blank timeline
-	 * - user following another user
-	 * - ordering of posts
-	 */
-	
 	private static final Instant POST_TIME = Instant.ofEpochSecond(10);
 	private static final PrintStream DUMMY_STDOUT = new PrintStream(new OutputStream() {
 		@Override public void write(int b) {}

@@ -3,21 +3,6 @@ package craftbook;
 import java.io.PrintStream;
 import java.util.List;
 
-/**
- * Class that produces a text-based view of a user's
- * profile. 
- * This takes the form of a list of all posts for that 
- * user, most recent first, and detail of how long ago
- * the posts were created.
- * 
- *  Example:
- *  
- *  Good game though. (1 minute ago)
- *  Damn! We lost! (2 minutes ago)
- *  
- * @author nick
- *
- */
 public class ProfileView extends View {
 
 	public ProfileView(User user, PrintStream ostream) {
@@ -28,10 +13,9 @@ public class ProfileView extends View {
 	public String calculate() {
 		StringBuilder result = new StringBuilder();
 		
-		// Assumed to be pre-sorted (see getPosts description)
 		List<Post> posts = targetUser.getPosts();
 		
-		// Iterate backwards (most recent first)
+		// posts is sorted earliest last, so iterate backwards 
 		for (int i = posts.size() - 1; i >= 0; --i) {
 			Post post = posts.get(i);
 			result.append(

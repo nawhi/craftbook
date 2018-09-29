@@ -44,14 +44,6 @@ public class ProfileViewTest {
 	private DummyUser dave = new DummyUser("dave");
 	private DummyProfileView view = new DummyProfileView(dave, DUMMY_STDOUT);
 		
-	
-	/*
-	 * Need to test:
-	 * - works with empty profiles
-	 * - prints correct stuff
-	 * - prints in correct order
-	 */
-	
 	@Test
 	public void emptyProfileGivesEmptyString() {
 		assertEquals("", view.calculate());
